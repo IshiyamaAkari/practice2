@@ -1,0 +1,73 @@
+@use "../global" as *;
+
+.works-wrap__con{
+  &__list{
+    &__item{
+      @include flex(space-between);
+      margin:5% 0;
+      overflow: hidden;
+      & a{
+        display: block;
+        width:60%;
+        max-width: 500px;
+        min-width:180px;
+        & img{
+          display: block;
+          width:100%;
+          margin:3% 0;
+          transition: 0.7s all;
+          box-shadow: 4px 10px 10px 4px $cShadow;
+          overflow: hidden;
+        }
+        &__txt{
+          width: 100%;
+          text-align: left;
+          @include flex(flex-start);
+          flex-wrap: wrap;
+          margin: 3% 0 0 0%;
+          & p{
+            display: inline-block;
+            &.date{
+              margin-right: 3%;
+            }
+            &.ttl {
+              width: 100%;
+              display: block;
+            }
+          }
+        }
+      }
+      & .box{
+        width:40%;
+      }
+      &:hover.works-wrap__con__list__item a img{
+        transform: scale(1.1, 1.1);
+        transition: 0.7s all;
+      }
+      &:nth-of-type(even){
+        flex-direction: row-reverse;
+      }
+    }
+  }
+}
+@include mq(tb){
+  .works-wrap__con {
+    width:80%;
+    margin: 0 auto;
+    &__list__item{
+      & .box {
+        display: none;
+      }
+      display: block;
+      margin:15% auto;
+      & a{
+        width:100%;
+      }
+    }
+  }
+}
+@include mq(sp) {
+  .works-wrap__con{
+    width:85%;
+  }
+}

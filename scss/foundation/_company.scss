@@ -1,0 +1,134 @@
+@use "../global" as *;
+
+.concept-wrap__con{
+  @include flex(space-between);
+  align-items:flex-start;
+  & img{
+    width:33%;
+    height:auto;
+  }
+  &__txt{
+    width:65%;
+    font-weight: 500;
+    line-height: 2.3;
+  }
+}
+.member{
+  background-color: $cBlack;
+  &-wrap__con__list{
+    @include flex(space-between);
+    flex-wrap: wrap;
+    &__item{
+      display: block;
+      background-color: $cGray_l;
+      width:28%;
+      height:30%;
+      margin-bottom: 5%;
+      padding:1.8%;
+      & img{
+        margin:0 auto;
+        width:85%;
+        display: block;
+        box-shadow: 0px 4px 4px 0px $cShadow;
+      }
+      & p{
+        display: block;
+        width:85%;
+        font-size: 0.95rem;
+        margin:8% auto 0;
+        & span{
+          display: inline-block;
+          font-size: 0.9rem;
+          margin-right:5%;
+          font-weight: 500;
+          color:$cGray_a;
+          font-family: $fEn;
+        }
+      }
+    }
+  }
+}
+.profile-wrap__con__list{
+  &__item{
+    border-top: solid 0.8px $cGray_d;
+    @include flex(flex-start);
+    &:nth-of-type(8){
+      border-bottom: solid 0.8px $cGray_d;
+    }
+    &__ttl{
+      padding: 2% 0 2% 3%;
+      width:30%;
+      background-color:$cGray_l;
+    }
+    &__txt{
+      padding: 2% 0 2% 5%;
+      & br{
+        display: none;
+      }
+    }
+  }
+}
+
+@include mq(pc){
+  .concept-wrap__con__txt{
+    line-height: 1.9;
+    & br{
+      display: none;
+    }
+  }
+  .member-wrap__con__list__item span{
+    display: block;
+    width:100%;
+  }
+}
+@include mq(tb) {
+  .concept-wrap__con{
+    flex-direction: column;
+    & img{
+      width:100%;
+      height:25vh;
+      object-fit: cover;
+    }
+    &__txt{
+      width:100%;
+      margin-top: 5%;
+      line-height: 2;
+      & br:nth-of-type(1), & br:nth-of-type(3), br:nth-of-type(4){
+        display: block;
+      }
+    }
+  }
+  .member-wrap__con__list{
+    &__item{
+      width:48%;
+      margin-bottom: 4%;
+    }
+  }
+  .profile-wrap__con__list__item{
+    &__txt{
+      & br{
+        display: block;
+      }
+    }
+    &:nth-of-type(2) .profile-wrap__con__list__item__ttl {
+      line-height: 3.6;
+    }
+  }
+}
+@include mq(sp) {
+  .profile-wrap__con__list__item{
+    flex-direction: column;
+    &__ttl{
+      padding: 3% 0 3% 2%;
+      width:100%;
+    }
+    &__txt{
+      width:100%;
+      margin-top:2%;
+      padding: 2% 0 2% 2%;
+    }
+    &:nth-of-type(2) .profile-wrap__con__list__item__ttl {
+      line-height: 1.5;
+    }
+  }
+}

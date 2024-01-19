@@ -1,0 +1,19 @@
+@use "../global" as *;
+
+.news-detail-wrap {
+  &__con{
+    width:80%;
+    margin:0 auto;
+    & .date {
+      margin-bottom: 5%;
+    }
+    & .txt {
+      line-height: 2;
+    }
+  }
+}
+@include mq(tb){
+  .news-detail-wrap__con{
+    width:90%;
+  }
+}

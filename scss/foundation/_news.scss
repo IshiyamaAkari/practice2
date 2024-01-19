@@ -1,0 +1,26 @@
+@use "../global" as *;
+
+.news-wrap__con{
+  &__list li{
+    border-bottom:  solid 0.8px $cGray_d;
+    padding: 3% 0 2% 3%;
+    @include flex(flex-start);
+    & p{
+      display: inline-block;
+      &.date{
+        margin-left:3%;
+      }
+      &.ttl{
+        width:100%;
+      }
+    }
+    &:hover .ttl{
+      text-decoration:underline;
+    }
+  }
+}
+@include mq(tb){
+  .news-wrap{
+    margin-top: 15%;
+  }
+}

@@ -1,0 +1,223 @@
+@use "../global" as *;
+
+.business-wrap__con{
+  &__sub__list{
+    @include flex(space-between);
+    align-items: stretch;
+    flex-wrap: wrap;
+    &__item{
+      width:25%;
+      height:auto;
+      margin-bottom: 5%;
+      background-color:$cGray_s;
+      padding:3% 2%;
+      text-align: center;
+      position: relative;
+      margin-left:15px;
+      &::before,&::after{
+        content: "";
+        position: absolute;
+        top:0;
+        left:0;
+        width: 1.5px;
+        height: 30px;
+        background: $cBlack;
+      }
+      &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+  }
+  &__arrow{
+    display: block;
+    color: $cBlack;
+    line-height: 1.5;
+    position: relative;
+    width: 0.2rem;
+    height: 3rem;
+    background: $cBlack;
+    margin:0 auto 5%;
+    &::before{
+      content: '';
+      width: 1.65rem;
+      height: 1.65rem;
+      border: 0.2rem solid $cBlack;
+      border-top: 0;
+      border-right: 0;
+      transform: rotate(-45deg);
+      transform-origin: bottom left;
+      position: absolute;
+      left: 50%;
+      bottom: -0.05rem;
+      box-sizing: border-box;
+    }
+  }
+  &__main{
+    background-color: $cBlack;
+    padding:3% 2%;
+    color:$cWhite;
+    text-align: center;
+    font-weight: 500;
+    line-height: 2;
+  }
+}
+.features-wrap__con{
+  &__block{
+    @include flex(space-around);
+    align-items:flex-start;
+    margin-bottom: 8%;
+    & img {
+      width: 33%;
+      margin-right: 4%;
+    }
+    &:nth-of-type(even){
+      flex-direction: row-reverse;
+      & img{
+        margin-right: 0;
+        margin-left:4%;
+      }
+    }
+    &__txt{
+      & h2{
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 2px;
+        margin-bottom: 3%;
+      }
+      & p{
+        font-weight: 500;
+        line-height: 30px;
+      }
+    }
+  }
+  
+}
+.flow{
+  background-color: $cBlack;
+  &-wrap__con{
+    @include flex;
+    flex-direction: column;
+    background-color:$cGray_s ;
+    width:100%;
+    padding:3%;
+    &__block{
+      @include flex(flex-start);
+      align-items: stretch;
+      background-color: $cWhite;
+      margin-bottom: 3%;
+      height: 100%;
+      text-align: left;
+      box-shadow: 0px 2px 2px 0px $cShadow;
+      &__no{
+        background-color:$cGray_n;
+        text-align: center;
+        font-family: Roboto;
+        font-size: 2.3rem;
+        letter-spacing: 2.5px;
+        padding:3%;
+        display: table;
+        & p{
+          display: table-cell;
+          vertical-align: middle;
+        }
+      }
+      &__txt{
+        padding:1% 0 1% 2%;
+        & h2{
+          font-weight: 500;
+          font-size: 1.1rem;
+          margin-bottom:1%;
+        }
+        & p{
+          color:$cGray_a;
+        }
+      }
+    }
+  }
+}
+
+@include mq(pc){
+  .features-wrap__con__block__txt {
+    & h2{
+      font-size: 1.5rem;
+      letter-spacing: 1.5px;
+    }
+    & p{
+      font-weight: 500;
+      line-height: 25px;
+    }
+  }
+}
+@include mq(tb) {
+  .business-wrap__con {
+    &__sub__list__item{
+      width: 40%;
+      &::before,&::after {
+        height: 15px;
+      }
+    }
+    &__arrow{
+      height: 2rem;
+      &::before {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+    &__main{
+      padding:3% 1.5%;
+    }
+  }
+  .features-wrap__con__block{
+    flex-direction: column;
+    margin-bottom: 10%;
+    &:nth-of-type(even) {
+      flex-direction:column;
+      & img{
+        margin-left: 0%;
+      }
+    }
+    & img{
+      width:100%;
+      height:25vh;
+      object-fit: cover;
+      margin-right: 0%;
+      margin-bottom:5%;
+      object-position: 50% 10%;
+    }
+    &__txt {
+      width:100%;
+    }
+  }
+  .flow-wrap__con__block{
+    margin-bottom:4%;
+    :nth-of-type(4){
+      margin-bottom: 0;
+    }
+  }
+}
+@include mq(sp) {
+  .business-wrap__con__main p span br{
+    &:nth-of-type(2){
+      display: none;
+    }
+  }
+  .features-wrap__con__block__txt h2{
+    font-size: 1.3rem;
+    letter-spacing: 1.3px;
+  }
+  .flow-wrap__con__block{
+    display: block;
+    &__no{
+      width:100%;
+      padding: 1%;
+      font-size: 1.4rem;
+    }
+    &__txt{
+      padding:5%;
+    }
+  }
+}

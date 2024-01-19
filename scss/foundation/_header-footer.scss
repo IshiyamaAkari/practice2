@@ -1,0 +1,339 @@
+@use "../global" as *;
+
+.header-wrap {
+  position: absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%) ;
+  width: 90%;
+  margin:0 auto;
+  box-sizing: border-box;
+  @include flex(space-between);
+  z-index: 10;
+  background: transparent;
+  transition: 0.5s;
+  &__logo {
+    transition: 0.5s;
+    max-width: 20%;
+    & a {
+      display: block;
+      color:$cWhite;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  &__nav{
+  width:80%;
+    & ul {
+      @include flex(flex-end);
+      width: 100%;
+      & li{
+        &:not(:nth-of-type(1)) {
+          margin-left:3%;
+        }
+        & a {
+          display: inline-block;
+          white-space: nowrap;
+          font-size: 0.95rem;
+          transition: 0.5s;
+          color:$cWhite;
+          letter-spacing: 2.4px;
+          position: relative;
+          &::after {
+            /*マークのスタイル*/
+            position: absolute;
+            content: "";
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-color: $cWhite;
+            border-radius: 50%;
+            bottom: -15px;
+            left: calc(50% - 5px);
+            opacity: 0;
+            -webkit-transform: translateY(50%);
+            transform: translateY(50%);
+            -webkit-transition: all 0.6s ease;
+            transition: all 0.6s ease;
+          }
+          &:hover::after {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+          }
+        }
+      }
+    }
+  }
+}
+.__h-bottom{
+  & .header-wrap__logo a, & .header-wrap__nav ul li a{
+    color:$cBlack;
+  }
+  & .header-wrap__nav ul li a::after{
+    background-color: $cBlack;
+  }
+}
+.footer-wrap{
+  background: linear-gradient(transparent 30%, $cGray_s 30%);
+  max-width: 100vw;
+  &__cta{
+    width:80%;
+    margin-left: auto;
+    background-color: $cBlack;
+    padding:4% 5%; 
+    z-index: 1;
+    & p{
+      letter-spacing: 1.6px;
+      color:$cGray_l;
+      font-weight: 400;
+      font-size: 0.95rem;
+      & br{
+        display: none;
+      }
+      &:nth-of-type(2){
+        font-size: 0.9rem;
+      }
+    }
+    &__btn{
+      @include flex(flex-start);
+      margin-top:3%;
+      &__item{
+        border: 1px solid $cGray_d;
+        padding:2%;
+        background-color:$cGray_d30;
+        transition: 0.5s;
+        & a{
+          @include flex(center);
+          & img{
+            width:15%;
+            margin-right:10%;
+          }
+          & .footer-wrap__cta__btn__item__txt{
+            & span{
+              font-size: 1.1rem;
+            }
+          }
+        }
+        &:nth-of-type(1){
+          margin-right:10%;
+        }
+        &:hover{
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+  &__con{
+    @include flex(space-between);
+    padding:10% 5% 5% 5%;
+    & .logo{
+      line-height: 0;
+    }
+    &__nav ul{
+      display: block;
+      @include flex(center);
+      & li{
+        margin-right: 7%;
+        &:nth-of-type(5){
+          margin-right: 0;
+        }
+        & a{
+          font-size: 0.9rem;
+          line-height:0;
+          white-space: nowrap;
+        }
+      }
+    }
+    & small{
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@include mq(pc){
+  .footer-wrap{
+    &__cta__btn__item{
+      &:nth-of-type(1){
+        margin-right: 5%;
+      }
+      & a img{
+        display: none;
+      }
+    }
+    &__con {
+      flex-wrap: wrap;
+      flex-direction: column;
+      & .logo {
+        text-align: left;
+        width: 100%;
+        line-height: normal;
+      }
+      &__nav ul {
+        max-width: 100%;
+        margin: 10% auto;
+      }
+      & small {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
+@include mq(tb){
+  header .header-wrap {
+    width: 100%;
+    &__logo{
+      margin-left:50px;
+    }
+    &__nav {
+      position: fixed;
+      display: none;
+      text-align: center;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: 50;
+      background: $cBlack;
+      color:$cWhite;
+      & ul {
+        display: block;
+        width: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        margin: 5% auto;
+        line-height: 3;
+        & li{
+          &:not(:nth-of-type(1)) {
+            margin-left: 0%;
+          }
+          & a{
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+  header .drawer {
+    height:10vh;
+    visibility: visible;
+    width: 25px;
+    position: absolute;
+    top: 12.8px;
+    right: 50px;
+    border-top: solid 2.8px $cWhite;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.5s;
+    &::before {
+      @include d-style;
+      top: 6px;
+    }
+    &::after {
+      @include d-style;
+      top: 15px;
+    }
+  }
+  body.nav-open {
+    & header .drawer {
+      border-top: 0;
+      &::before {
+        top: 9px;
+        transform: rotate(-45deg);
+      }
+      &::after {
+        top: 9px;
+        transform: rotate(45deg);
+      }
+    }
+  }
+  .__h-bottom{
+    & .header-wrap{
+      &__nav{
+        background: $cWhite;
+        color:$cBlack;
+      }
+    }
+    & .drawer{
+      border-top: solid 2.8px $cBlack;
+      &::before, &::after{
+      background-color: $cBlack;
+      }
+    }
+  }
+  .footer-wrap{
+    &__cta {
+      width:85%;
+      padding:6% 5%;
+      & p{
+        font-weight: 400;
+        font-size: 0.9rem;
+        & br{
+          display: block;
+        }
+      }
+      &__btn {
+        display: block;
+        margin-top: 5%;
+        &__item {
+          padding:1%;
+          width: 350px;
+          &:nth-of-type(1){
+            margin-bottom: 5%;
+          }
+          & a{
+            @include flex(flex-start);
+            & img{
+              display: block;
+              width:12%;
+              margin-right: 5%;
+            }
+            & .footer-wrap__cta__btn__item__txt{
+              & p{
+                font-weight: 400;
+                font-size: 0.85rem;
+                & span {
+                  font-weight: 400;
+                  font-size: 0.9rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include mq(sp){
+  header .header-wrap {
+    &__logo {
+      margin-left: 30px;
+    }
+  }
+  header .drawer {
+    right:30px;
+  }
+  .footer-wrap {
+    &__cta{
+      width: 90%;
+      padding: 9% 5%;
+      &__btn__item{
+        width:260px;
+      }
+    }
+    &__con__nav ul{
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width:85%;
+      & li{
+      width:40%;
+      display: block;
+      padding:2%;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@use "../global" as *;
+
+.works-detail-wrap{
+  &__con{
+    max-width:80%;
+    margin:0 auto;
+    &__main{
+      margin-bottom: 5%;
+    }
+    &__img{
+      width:100%;
+      height:auto;
+      padding:0;
+      overflow: hidden;
+      z-index: 0;
+      position: relative;
+      margin-bottom: 10%;
+      & .bg{
+        width:100%;
+        filter: blur(70px) brightness(140%);
+      }
+      & .img{
+        margin:0 auto;
+        @include center;
+        z-index: 1;
+        width:85%;
+        & img{
+          width:100%;
+          height:auto;
+          box-shadow: 0 4px 4px 0 $cShadow;
+        }
+      }
+      & .img-contents{
+        @include flex(space-around);
+        @include center;
+        z-index: 1;
+        width: 85%;
+        height: 100%;
+        overflow: hidden;
+        & img{
+          display: block;
+          box-shadow: 0 4px 4px 0 $cShadow;
+          width: 40%;
+          height:auto;
+          &:nth-of-type(1){
+            transform: translateY(5%);
+          }
+          &:nth-of-type(2){
+            transform: translateY(-5%);
+          }
+        }
+      }
+    }
+  }
+}
+@include mq(tb){
+  .works-detail-wrap {
+    &__con {
+      max-width: 90%;
+    }
+  }
+}
