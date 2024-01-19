@@ -131,4 +131,16 @@
       line-height: 1.5;
     }
   }
+  .member-wrap__con__list{
+    flex-direction: column;
+    width:80%;
+    margin:0 auto;
+    &__item{
+      width: 90%;
+      & span{
+        display: inline-block;
+        width:fit-content;
+      }
+    }
+  }
 }

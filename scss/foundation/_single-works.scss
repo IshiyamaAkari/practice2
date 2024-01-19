@@ -60,3 +60,33 @@
     }
   }
 }
+@include mq(sp) {
+  .works-detail-wrap {
+    &__con {
+      max-width: 100%;
+      &__img{
+        &.__second{
+          height:820px;
+          & .bg {
+            height: 100%;
+          }
+          & .img-contents {
+            flex-direction: column;
+            & img{
+              width:220px;
+              height:391px;
+              object-position: 50% top;
+              overflow: hidden;
+              &:nth-of-type(1){
+                transform: translateY(0%);
+              }
+              &:nth-of-type(2){
+                transform: translateY(0%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

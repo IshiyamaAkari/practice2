@@ -14,7 +14,7 @@ function slideAnime(){
   });
 }
 $(window).on('load', function(){
-  slideAnime();
+  setTimeout(slideAnime, 3800);
 });
 
 //テキスト滑らかに表示アニメーション//

@@ -62,6 +62,12 @@
     text-align: center;
     font-weight: 500;
     line-height: 2;
+    & p .break{
+      display: inline-block;
+      & .must{
+        display: block;
+      }
+    }
   }
 }
 .features-wrap__con{
@@ -200,11 +206,6 @@
   }
 }
 @include mq(sp) {
-  .business-wrap__con__main p span br{
-    &:nth-of-type(2){
-      display: none;
-    }
-  }
   .features-wrap__con__block__txt h2{
     font-size: 1.3rem;
     letter-spacing: 1.3px;

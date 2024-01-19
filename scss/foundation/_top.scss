@@ -42,13 +42,20 @@
   &__con__list li{
     & a{
       @include flex(flex-start);
-      & p:nth-of-type(1){
+      & p{
+        &:nth-of-type(1){
         display: inline-block;
         margin-right: 3%;
+        }
+        &.ttl{
+          border-bottom: 0px solid transparent;
+          transition: border-bottom 0.5s ease-in-out;
+        }
       }
     }
     &:hover a .ttl{
-      text-decoration:underline;
+      border-bottom: 0.8px solid $cGray_a;
+      opacity: 0.7;
     }
   }
 }
@@ -57,6 +64,9 @@
   &-wrap{
     @include flex(space-between);
     align-items: flex-start;
+    & .s-ttl{
+      margin-bottom: 0%;
+    }
     &__con{
       margin-left:5%;
       font-weight: 500;
@@ -316,6 +326,9 @@
     margin-top: 20%;
     &-wrap {
       display: block;
+      & .s-ttl {
+        margin-bottom: 8%;
+      }
       &__con{
         margin-left: 0;
         font-size: 1rem;
